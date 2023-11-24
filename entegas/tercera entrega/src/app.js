@@ -14,12 +14,21 @@ app.listen(PORT, () => {
 app.get('/products', async (req, res) => {
     try {
         const products = await productManager.consultarProductos();
-        res.json({ products });
+
+        const limite = parseInt(req.query.limit);
+
+        if (!isNaN(limite) && limite > 0) {
+            const productosFiltrados = products.slice(0, limite);
+            res.json({ products: productosFiltrados });
+        } else {
+            res.json({ products });
+        }
     } catch (error) {
         console.error('Error al obtener productos:', error);
         res.status(500).json({ error: 'Error al obtener productos' });
     }
 });
+
 
 app.get('/:idProducto', async (req, res) => {
     const idProducto = req.params.idProducto;
