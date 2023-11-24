@@ -1,12 +1,13 @@
-import fs from 'fs'
-
-const path = './files/products.json'
-
+import fs from 'fs';
  export default class ProductManager {
 
+    constructor() {
+        this.path = './files/products.json';
+    }
+
     consultarProductos = async () => {
-        if(fs.existsSync(path)){
-            const data = await fs.promises.readFile(path,'utf-8')
+        if(fs.existsSync(this.path)){
+            const data = await fs.promises.readFile(this.path,'utf-8')
             const productos = JSON.parse(data);
             return productos
         } else{
@@ -24,7 +25,7 @@ const path = './files/products.json'
         }
 
         productos.push(producto);
-        await fs.promises.writeFile(path,JSON.stringify(productos,null,'\t'))
+        await fs.promises.writeFile(this.path,JSON.stringify(productos,null,'\t'))
         return productos
 
     }
@@ -42,7 +43,7 @@ const path = './files/products.json'
         const updatedProduct = { ...productos[index], ...updatedData };
         productos[index] = updatedProduct;
 
-        await fs.promises.writeFile(path, JSON.stringify(productos, null, '\t'));
+        await fs.promises.writeFile(this.path, JSON.stringify(productos, null, '\t'));
 
         return updatedProduct;
     }
@@ -59,7 +60,7 @@ const path = './files/products.json'
 
         const deletedProduct = productos.splice(index, 1)[0];
 
-        await fs.promises.writeFile(path, JSON.stringify(productos, null, '\t'));
+        await fs.promises.writeFile(this.path, JSON.stringify(productos, null, '\t'));
 
         return deletedProduct;
     }
