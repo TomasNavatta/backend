@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
     }
 });
 
+
 // Ruta para obtener un producto por ID
 router.get('/:pid', (req, res) => {
     const productId = req.params.pid;
@@ -29,6 +30,12 @@ router.get('/:pid', (req, res) => {
 // Ruta para agregar un nuevo producto
 router.post('/', (req, res) => {
     const { title, description, code, price, stock, category, thumbnails } = req.body;
+
+    // Verificar si todos los campos requeridos están presentes
+    if (!title || !description || !code || !price || !stock || !category) {
+        return res.status(400).json({ error: 'Todos los campos son obligatorios, excepto thumbnails' });
+    }
+
     const newProduct = {
         id: products.length + 1, // Autogenerar ID
         title,
@@ -44,6 +51,7 @@ router.post('/', (req, res) => {
     products.push(newProduct);
     res.json({ status: 'success', product: newProduct });
 });
+
 
 // Ruta para actualizar un producto por ID
 router.put('/:pid', (req, res) => {

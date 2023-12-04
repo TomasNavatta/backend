@@ -7,17 +7,17 @@ const env = async () => {
     let primerConsulta = await manager.consultarProductos();
     console.log('Productos antes de la actualización:', primerConsulta);
 
-    // // Agregar un nuevo producto
-    // let producto = {
-    //     title: 'iphone',
-    //     descrption: 'Pantalla de 6.7", 1 tb de almacenamiento',
-    //     price:2000,
-    //     img:'https://toppng.com/uploads/preview/apple-iphone-15-pro-max-natural-titanium-png-11695041051y3hjkvpdvc.png',
-    //     code: '15 pro max',
-    //     stock: 20
-    // }
-    // let result = await manager.addProducto(producto);
-    // console.log('Productos después de agregar un nuevo producto:', result);
+    // Agregar un nuevo producto
+    let producto = {
+        title: 'iphone',
+        descrption: 'Pantalla de 6.7", 1 tb de almacenamiento',
+        price:2000,
+        img:'https://toppng.com/uploads/preview/apple-iphone-15-pro-max-natural-titanium-png-11695041051y3hjkvpdvc.png',
+        code: '15 pro max',
+        stock: 20
+    }
+    let result = await manager.addProducto(producto);
+    console.log('Productos después de agregar un nuevo producto:', result);
 
     // // Actualizar el producto recién agregado
     // const productId = 14; // El ID del producto que deseas actualizar
