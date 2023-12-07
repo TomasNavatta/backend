@@ -1,0 +1,8 @@
+
+  <h1>Listado de Productos</h1>
+  <ul>
+    {{#each products}}
+      <li>nombre:{{this.title}}, precio:{{this.price}}, Descripcion: {{this.description}}</li>
+    {{/each}}
+  </ul>
+  <script src="/socket.io/socket.io.js"></script>
