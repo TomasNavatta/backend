@@ -1,0 +1,367 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  /* navbar */
+
+  .navbar {
+    background-color: #1a1a1a; /* Ajusta el color de fondo según tu diseño */
+    padding: 10px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    color: #fff; /* Ajusta el color del texto según tu diseño */
+    font-size: 24px; /* Ajusta el tamaño del texto según tu diseño */
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list li {
+    margin-right: 20px; /* Ajusta el espacio entre elementos según tu diseño */
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #fff; /* Ajusta el color del texto según tu diseño */
+    font-weight: bold; /* Ajusta el peso de la fuente según tu diseño */
+    font-size: 16px; /* Ajusta el tamaño del texto según tu diseño */
+}
+
+/* Añade estilos de hover según tu diseño */
+.nav-list a:hover {
+    color: #ffcc00; /* Cambia el color al pasar el ratón según tu diseño */
+}
+
+
+/* productos */
+
+.containerTitle{
+  max-width: 640px;
+  padding: 80px 0 64px;
+}
+h1{
+  font-size: 48px;
+  line-height: 1.08349;
+  font-weight: 600;
+  letter-spacing: -.003em;
+  display: inline;
+}
+
+.subTitle{
+  font-size: 48px;
+  line-height: 1.08349;
+  font-weight: 600;
+  letter-spacing: -.003em;
+  display: inline;
+  color: #555;
+}
+h2{
+  text-align: center;
+}
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto; 
+    max-width: 1200px; 
+  }
+  
+  .card {
+    width: 100%; 
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .card-body {
+    flex-grow: 1; 
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .product-title {
+    font-size: 16px;
+    margin: 0 0 8px;
+  }
+  
+  .product-description {
+    font-size: 12px;
+    color: #555;
+  }
+  
+  .product-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .price {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .add-to-cart {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-to-cart:hover {
+    background-color: #0056b3;
+  }
+  
+
+    /* paginacion */
+
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+  }
+  
+  .pagination-button {
+      background-color: #222;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .pagination-button:hover {
+      background-color: #444;
+      transform: scale(1.05);
+  }
+  
+
+
+
+  
+     /*Estilos para carrito */
+  
+     .superContainer {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+  }
+  
+  .containerCart {
+      width: 70%;
+      margin: 20px;
+  }
+  
+  .cartItem {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: center;
+      text-align: center;
+      font-weight: 600;
+      margin: 10px 0;
+  }
+  
+  .cartImage {
+      width: 100px;
+      height: 130px;
+      border-radius: 10%;
+      object-fit: cover;
+  }
+  
+  .trashIcon {
+      border: 0px;
+      background-color: transparent;
+  }
+  
+  .cartParagraph {
+      margin: 0px;
+      font-size: 20px;
+  }
+  
+  .cartAlignment {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: center;
+      justify-items: center;
+      font-size: 20px;
+      margin-bottom: 10px;
+  }
+  
+  .totalPrice {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      text-align: center;
+      font-weight: 900;
+      align-items: center;
+      justify-items: center;
+      margin-top: 10px;
+  }
+  
+  .totalText {
+      margin-bottom: 0px;
+      font-weight: bold;
+      font-size: 20px;
+  }
+  
+  .cartTitle {
+      margin: 0px;
+      font-size: 22px;
+      text-align: center;
+      font-weight: 700;
+  }
+  
+
+  
+  .trashContainer {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      background-color: rgb(226, 45, 45);
+      border-radius: 4px; 
+  }
+  
+  /* login */
+
+  .github-btn {
+    margin-top: 20px;
+}
+
+.github-btn button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    color: #000;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.github-icon {
+    margin-right: 8px;
+}
+
+
+
+
+  .super-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+    color: #333;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.form-label {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-input {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.login-btn {
+  background-color: transparent;
+  color: #000;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  cursor: pointer;
+ 
+}
+
+.login-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.signup-link {
+    margin-top: 10px;
+}
+
+.signup {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup2 {
+  color: #fff;
+  text-decoration: none;
+}
+  
+  
+  
+  

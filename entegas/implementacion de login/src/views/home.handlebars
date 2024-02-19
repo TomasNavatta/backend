@@ -1,0 +1,37 @@
+  
+  <div class="containerTitle">
+    <h1>Store.</h1>
+    <div class="subTitle">The best way to buy the products you love.</div>
+  </div>
+  
+<div class="grid-container">
+  {{#each products}}
+    <div class="card">
+      <img src="{{this.thumbnail}}" alt="Producto Apple">
+      <div class="card-body">
+        <h3 class="product-title">{{this.name}}</h3>
+        <p class="product-description">{{this.description}}</p>
+        <div class="product-details">
+          <p class="price">${{this.price}}</p>
+          <button class="add-to-cart">Add To Cart</button>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+</div>
+<div class="pagination-container">
+    {{#if hasPrevPage}}
+        <a href="/products?page={{prevPage}}{{#if limit}}&limit={{limit}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}" class="pagination-button">← Anterior</a>
+    {{/if}}
+
+    {{#if hasNextPage}}
+        <a href="/products?page={{nextPage}}{{#if limit}}&limit={{limit}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}" class="pagination-button">Siguiente →</a>
+    {{/if}}
+</div>
+
+
+
+
+<script src="/js/logout.js"></script>
+
