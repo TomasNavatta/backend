@@ -1,0 +1,16 @@
+ <div class="superContainer">
+ <div class="container">
+        <hr class='lineSize'></hr>
+        {{#with cart}}
+            {{#each products}}
+                <div class="cartItem">
+                    <p class="cartParagraph">Product:{{this.product.name}}</p>
+                    <p class="cartParagraph">Price:${{this.product.price}}</p>
+                    <p class="cartParagraph">Quantity:{{this.product.stock}}</p>
+                </div>
+                <hr>
+            {{/each}}
+        {{/with}}
+      
+    </div>
+    </div>
