@@ -13,5 +13,12 @@ form.addEventListener("submit", e =>{
         headers:{
             "Content-Type": "application/json"
         }
-    }).then(result=>result.json()).then(json=>console.log(json)).catch (error=>console.log(error))
+    }) .then(result=> result.json())
+    .then(json=>{
+        console.log(json)
+        if(json.status==="success"){
+            localStorage.setItem("token", json.access_token)
+            window.location.replace("http://localhost:8080/")
+        }
+    })
 })

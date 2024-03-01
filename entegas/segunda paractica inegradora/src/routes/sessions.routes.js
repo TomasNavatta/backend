@@ -1,7 +1,7 @@
 import { Router } from "express"
 import userModel from "../dao/models/Users.model.js"
 import jwt from "jsonwebtoken"
-import { createHash, isValidPassword } from "../utils.js"
+import { createHash, authToken, generateToken } from "../utils.js"
 import passport from "passport"
 
 const router = new Router()
@@ -10,19 +10,19 @@ router.post("/register", passport.authenticate("register", {
     passReqToCallback: true,
     session: false,
     failureRedirect: "/api/sessions/failedRegister" 
-}), (req, res) => {
+}), (req, res, { access_token }) => {
     res.send({
         status: "success",
-        message: "Usuario registrado",
-        payload: req.user._id
-    });
+        access_token
+    })
+
+   
 });
 
 
 router.get("/failedRegister", (req,res)=>{
-    res.send("fallo en el registro")
+    res.status(400).json({ message: "Fallo en el registro" });
 })
-
 
 router.post("/login", passport.authenticate("login",{session:false, failureRedirect:"api/sessions/failedLogin"}), (req,res)=>{
     const serializedUser = {
@@ -41,7 +41,7 @@ router.post("/login", passport.authenticate("login",{session:false, failureRedir
 })
 
 router.get("/failedLogin", (req,res)=>{
-    res.send("fallo en el login")
+    res.status(400).json({ message: "Fallo en el login" });
 })
 
 router.get("/github", passport.authenticate("github", {scope:['user:email']}), async (req,res)=>{
@@ -57,7 +57,8 @@ router.get("/githubcallback", passport.authenticate("github", {failureRedirect: 
 
 router.get('/logout', (req,res)=>{
 
-    req.session.destroy(err=>{
+   try{
+    req.destroy(err=>{
 
         if(err){
             return res.status(500).send({
@@ -67,6 +68,10 @@ router.get('/logout', (req,res)=>{
         }
         res.redirect('/login')
     })
+    
+   } catch(error){
+    console.log(error)
+   }
 })
 
 router.post("/restartPassword", async (req,res)=>{
@@ -92,5 +97,14 @@ router.post("/restartPassword", async (req,res)=>{
         message: "contrasenia restaurada"
     })
 })
+
+router.get("/api/current", authToken, (req,res)=>{
+    res.send({status:"success", payload:req.user})
+    
+    
+})
+
+
+
 
 export default router

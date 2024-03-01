@@ -1,7 +1,7 @@
 import passport from "passport";
 import local from "passport-local"
 import gitHubStrategy from "passport-github2"
-import { createHash, isValidPassword } from "../utils.js";
+import { createHash, isValidPassword, generateToken } from "../utils.js";
 import userModel from "../dao/models/Users.model.js";
 
 import Users from "../dao/dbManager/userManager.js";
@@ -18,9 +18,9 @@ const initializePassport = async () => {
         async ( req, email, password, done ) => {
 
         try {
-            const { first_name, last_name, dni, gender,  } = req.body;
+            const { first_name, last_name, email, age  } = req.body;
 
-            if(!first_name || !last_name || !dni){
+            if(!first_name || !last_name || !email){
 
                 return done(null,false,{message:"valores incompletos"})
             
@@ -36,17 +36,29 @@ const initializePassport = async () => {
 
             const hashedPassword = await createHash(password)
 
+            const cart = await userService.saveUser();  
+
             const newUser = {
                 first_name,
                 last_name,
                 email,
-                gender,
-                dni,
+                age,
+                cart: cart._id,
                 password: hashedPassword
             }
 
+            
+          
+
+          
+
             let result = await userService.saveUser(newUser);
-            return done (null, result);
+            const access_token = generateToken(newUser);
+            return done (null, result, { access_token });
+            
+
+
+
 
         } catch (error) {
             return done(error)
@@ -56,7 +68,7 @@ const initializePassport = async () => {
 
     passport.use("login", new LocalStrategy(
         { usernameField: "email", session: false }, // Opciones
-        async (email, password, done) => { // Función de verificación
+        async (email, password, done, ) => { // Función de verificación
             try {
                 const user = await userService.getBy({ email });
                 if (!user) {
@@ -64,6 +76,9 @@ const initializePassport = async () => {
                 }
     
                 const passwordValidation = await isValidPassword(password, user);
+
+              
+                
     
                 if (!passwordValidation) {
                     return done(null, false, { message: "La contraseña es incorrecta." });

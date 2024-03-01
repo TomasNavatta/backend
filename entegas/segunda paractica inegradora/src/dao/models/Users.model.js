@@ -16,12 +16,11 @@ const schema = new mongoose.Schema({
     },
     rol:{
         type:String,
-        enum:["user","admin"],
         default:"user"
     },
     cart: { 
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Cart' 
+        ref: 'carts' 
     }, 
 
 })

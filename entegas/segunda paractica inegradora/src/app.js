@@ -1,6 +1,4 @@
 import express from "express"
-import session from "express-session"
-import MongoStore from "connect-mongo"
 import mongoose from "mongoose"
 import passport from "passport"
 import handlebars from "express-handlebars"
@@ -32,15 +30,6 @@ initializePassport()
 app.use(passport.initialize())
 app.use(cookieParser())
 
-app.use(session({
-    store: new MongoStore({
-        mongoUrl: MONGO,
-        ttl:3600
-    }),
-    secret:"CoderSecret",
-    resave:false,
-    saveUninitialized:false
-}))
 
 
 const httpServer = app.listen(PORT, ()=>{
@@ -56,5 +45,6 @@ app.use("/products", productRoutes)
 app.use("/cart", cartRoutes)
 app.use('/', viewsRouter)
 app.use('/api/sessions', sessionRouter)
+
 
 

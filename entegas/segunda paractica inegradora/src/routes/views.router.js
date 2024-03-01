@@ -1,5 +1,6 @@
 import { Router } from "express";
 
+
  
 
 const router = Router();
@@ -8,7 +9,7 @@ const router = Router();
 
 const publicAccess = (req,res,next) =>{
 
-    if(req.session.user){
+    if(req.user){
 
         return res.redirect('/');
 
@@ -20,7 +21,7 @@ const publicAccess = (req,res,next) =>{
 
 const privateAccess = (req,res,next) =>{
 
-    if(!req.session.user){
+    if(!req.user){
 
         return res.redirect('/login');
 
@@ -42,11 +43,13 @@ router.get('/login', publicAccess, (req,res)=>{
 
     res.render('login')
 
+
+
 })
 
 router.get('/',privateAccess, (req,res)=>{
 
-    res.render('profile', {user:req.session.user})
+    res.render('profile', {user:req.user})
 
 })
 

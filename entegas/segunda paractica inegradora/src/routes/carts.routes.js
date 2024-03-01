@@ -22,9 +22,7 @@ router.get("/:cid", async (req, res) => {
     try{
         const { cid } = req.params;
         const cart = await cartsService.getById(cid);
-        res.render('carts.handlebars', {
-          cart
-        });
+        res.render('carts.handlebars',{ status: "success", message: cart.products });
     }catch (error) {
         res.json({ status: "error", error });
     }

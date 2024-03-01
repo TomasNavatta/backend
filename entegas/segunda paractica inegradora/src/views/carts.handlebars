@@ -1,12 +1,19 @@
-<div class="superContainer">
+ <div class="superContainer">
  <div class="container">
+        <section class='cartAlignment'>
+            <p class='cartTitle'>Product</p>
+            <p class='cartTitle'>Name</p>
+            <p class='cartTitle'>Price</p>
+            <p class='cartTitle'>Quantity</p>
+          
+        </section>
         <hr class='lineSize'></hr>
         {{#with cart}}
             {{#each products}}
                 <div class="cartItem">
-                    <p class="cartParagraph">Product:{{this.product.name}}</p>
-                    <p class="cartParagraph">Price:${{this.product.price}}</p>
-                    <p class="cartParagraph">Quantity:{{this.product.stock}}</p>
+                    <p class="cartParagraph">{{this.name}}</p>
+                    <p class="cartParagraph">${{this.price}}</p>
+                    <p class="cartParagraph">{{this.stock}}</p>
                 </div>
                 <hr>
             {{/each}}
